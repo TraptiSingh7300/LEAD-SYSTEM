@@ -1,6 +1,7 @@
-const mongoose = require("mongoose");
+import "dotenv/config";
+import mongoose from "mongoose";
 
-const MONGO_URI = "mongodb://localhost:27017/lead-system_db";
+const MONGO_URI = process.env.MONGODB_URI;
 
 const ProviderSchema = new mongoose.Schema({
   id: { type: Number, required: true, unique: true },
@@ -32,6 +33,13 @@ const Lead =
 async function runSeed() {
   try {
     console.log("⏳ Connecting to MongoDB directly...");
+
+    if (!MONGO_URI) {
+      throw new Error(
+        "MONGODB_URI is undefined. Check your .env file placement.",
+      );
+    }
+
     await mongoose.connect(MONGO_URI);
     console.log("✅ Database connected perfectly!");
 
