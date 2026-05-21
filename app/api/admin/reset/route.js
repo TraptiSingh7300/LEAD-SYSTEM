@@ -1,6 +1,9 @@
+
 import connectDB from "@/lib/db";
 import { NextResponse } from "next/server";
 import mongoose from "mongoose";
+
+export const dynamic = 'force-dynamic';
 
 const Provider = mongoose.models.Provider || mongoose.model("Provider");
 
