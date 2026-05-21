@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import Link from "next/link"; // Built-in Next.js Link component
 
 export default function LeadForm() {
   const [formData, setFormData] = useState({
@@ -79,16 +80,47 @@ export default function LeadForm() {
         boxShadow: "0 4px 12px rgba(0,0,0,0.05)",
       }}
     >
-      <h1
+      {/* Top Navigation Row */}
+      <div
         style={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
           borderBottom: "2px solid #0070f3",
           paddingBottom: "10px",
-          color: "#333",
-          marginTop: "0",
+          marginBottom: "15px",
         }}
       >
-        New Lead Intake Form
-      </h1>
+        <h1
+          style={{
+            color: "#333",
+            margin: "0",
+            fontSize: "24px",
+          }}
+        >
+          New Lead Intake Form
+        </h1>
+        
+        {/* Navigation Button linking to /admin */}
+        <Link
+          href="/admin"
+          style={{
+            textDecoration: "none",
+            background: "#10b981", // Emerald green theme for the dashboard button
+            color: "white",
+            padding: "8px 14px",
+            borderRadius: "4px",
+            fontWeight: "bold",
+            fontSize: "14px",
+            transition: "background 0.2s",
+          }}
+          onMouseEnter={(e) => (e.target.style.background = "#059669")}
+          onMouseLeave={(e) => (e.target.style.background = "#10b981")}
+        >
+          Go to Dashboard 📊
+        </Link>
+      </div>
+
       <p style={{ color: "#666", marginBottom: "25px" }}>
         Fill out the details below to find your matching service providers.
       </p>
@@ -97,7 +129,6 @@ export default function LeadForm() {
         onSubmit={handleSubmit}
         style={{ display: "flex", flexDirection: "column", gap: "20px" }}
       >
-        {}
         <div>
           <label
             style={{
@@ -120,7 +151,6 @@ export default function LeadForm() {
           />
         </div>
 
-        {}
         <div>
           <label
             style={{
@@ -143,7 +173,6 @@ export default function LeadForm() {
           />
         </div>
 
-        {}
         <div>
           <label
             style={{
@@ -166,7 +195,6 @@ export default function LeadForm() {
           />
         </div>
 
-        {}
         <div>
           <label
             style={{
@@ -190,7 +218,6 @@ export default function LeadForm() {
           </select>
         </div>
 
-        {}
         <div>
           <label
             style={{
@@ -216,7 +243,6 @@ export default function LeadForm() {
           />
         </div>
 
-        {}
         <button
           type="submit"
           disabled={loading}
@@ -236,7 +262,6 @@ export default function LeadForm() {
         </button>
       </form>
 
-      {}
       {message.text && (
         <div
           style={{
